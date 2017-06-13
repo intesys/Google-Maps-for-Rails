@@ -5,7 +5,7 @@ module Gmaps4rails
     OPENLAYERS = "http://www.openlayers.org/api/OpenLayers.js"
     MAPQUEST   = "http://www.mapquestapi.com/sdk/js/v7.0.s/mqa.toolkit.js"
     BING       = "http://ecn.dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=7.0"
-    GOOGLE     = "//maps.google.com/maps/api/js?v=3.8"
+    GOOGLE     = "//maps.google.com/maps/api/js?v=3.27"
     GOOGLE_EXT = "//google-maps-utility-library-v3.googlecode.com/svn/"
 
     # options is the hash passed to the 'gmaps' helper
@@ -66,7 +66,7 @@ module Gmaps4rails
       when "mapquest"    then @js_array << "#{MAPQUEST}?key=#{provider_key}"
       when "bing"        then @js_array << BING
       else #case googlemaps which is the default
-        @js_array << "#{GOOGLE}&sensor=false&client=#{client}&key=#{provider_key}&libraries=geometry#{google_libraries}&#{google_map_i18n}"
+        @js_array << "#{GOOGLE}&key=#{provider_key}&libraries=geometry#{google_libraries}&#{google_map_i18n}"
         @js_array << "#{GOOGLE_EXT}tags/infobox/1.1.9/src/infobox_packed.js"                      if custom_infowindow_class
         @js_array << "//cdn.rawgit.com/mahnunchik/markerclustererplus/master/dist/markerclusterer.min.js" if do_clustering
         @js_array << "#{GOOGLE_EXT}trunk/richmarker/src/richmarker-compiled.js"                   if rich_marker
